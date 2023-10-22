@@ -1,4 +1,3 @@
-
 // variables1.rs
 //
 // Make me compile!
@@ -8,5 +7,5 @@
 
 fn main() {
     let x = 5;
-    println!("x has the value {}",x);
+    println!("x has the value {}", x);
 }

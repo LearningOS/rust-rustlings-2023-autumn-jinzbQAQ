@@ -1,4 +1,3 @@
-
 // intro2.rs
 //
 // Make the code print a greeting to the world.
@@ -7,5 +6,5 @@
 // hint.
 
 fn main() {
-    println!("Hello {}!",1);
+    println!("Hello !");
 }

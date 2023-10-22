@@ -15,6 +15,7 @@
 // hint.
 
 
+
 use std::collections::HashMap;
 
 // A structure to store the goal details of a team.
@@ -50,64 +51,6 @@ fn build_scores_table(results: String) -> HashMap<String, Team> {
         else{
             scores.insert(team_2_name,Team{goals_scored:team_2_score,goals_conceded:team_1_score});
         }
-
-
-
-
-
-        // let  a=Team{
-        //     goals_scored:team_1_score ,
-        //     goals_conceded:  team_2_score,
-        // };
-        // let  b=Team{
-        //     goals_scored:team_2_score ,
-        //     goals_conceded:  team_1_score,
-        // };
-        // scores.insert(team_1_name.clone(),a);
-        // scores.insert(team_2_name.clone(),b);
-
-// let ax=Team{
-//             goals_scored: 0,
-//             goals_conceded: 0,
-//         };
-
-        
-//         let cv = scores.entry(team_1_name.clone()).or_insert(ax);
-//         *cv =Team{
-//             goals_scored: cv.goals_scored+a.goals_scored,
-//             goals_conceded: cv.goals_conceded+a.goals_conceded,
-//         };
-//         let ax=Team{
-//             goals_scored: 0,
-//             goals_conceded: 0,
-//         };
-
-
-//         let mut m=scores;
-        
-
-
-//         let bv = m.entry(team_2_name.clone()).or_insert(ax);
-//         *bv =Team{
-//             goals_scored: bv.goals_scored+b.goals_scored,
-//             goals_conceded: bv.goals_conceded+b.goals_conceded,
-//         };
-
-//         let cc=Team{
-//             goals_scored: cv.goals_scored,
-//             goals_conceded: cv.goals_conceded,
-//         };
-//         let bb=Team{
-//             goals_scored: bv.goals_scored,
-//             goals_conceded: bv.goals_conceded,
-//         };
-  
-
-        // TODO: Populate the scores table with details extracted from the
-        // current line. Keep in mind that goals scored by team_1
-        // will be the number of goals conceded from team_2, and similarly
-        // goals scored by team_2 will be the number of goals conceded by
-        // team_1.
     }
     scores
 }

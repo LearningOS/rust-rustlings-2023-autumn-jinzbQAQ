@@ -6,14 +6,13 @@
 // hint.
 
 
-
 enum Message {
     // TODO: implement the message variant types based on their usage below
     ChangeColor(i32, i32, i32),
     Echo(String),
     Point {
-        x : i32, 
-        y : i32
+        x: i32,
+        y: i32,
     },
     Move(Point),
     Quit,
@@ -56,7 +55,7 @@ impl State {
             Message::Echo(a) =>self.message=String::from("hello world"),
             Message::Move(Point { x, y })=> self.position=Point{x,y},
             Message::Quit => self.quit=true,
-            _ => println!("不ok"),
+            _ => println!("nook"),
         };
     }
 }

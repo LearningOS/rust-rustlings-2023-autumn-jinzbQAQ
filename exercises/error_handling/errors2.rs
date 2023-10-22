@@ -25,12 +25,6 @@ pub fn total_cost(item_quantity: &str) -> Result<i32,ParseIntError > {
     let processing_fee = 1;
     let cost_per_item = 5;
     item_quantity.parse::<i32>().and_then(|num| Ok(num*5+1))
-    //Ok(item_quantity.parse::<i32>().and_then(|num| Ok(num*5+1)).expect("invalid digit found in string"))
-//     let x = match qty{
-//         Ok(x) =>x*cost_per_item+1,    
-//         Err(_) => Err("invalid digit found in string"),
-//    };
-//    Ok(x)
   
 }
 

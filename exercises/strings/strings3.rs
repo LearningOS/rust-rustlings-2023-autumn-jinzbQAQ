@@ -4,40 +4,30 @@
 // hint.
 
 
+
 fn trim_me(input: &str) -> String {
     // TODO: Remove whitespace from both ends of a string!
-    let mut x=input.to_string();
-    let mut j:u32=0;
-    for i in x.chars(){
-        if i==' '{
-           j=j+1; 
-        }
-        else {
+    let mut x = input.to_string();
+    let mut j: u32 = 0;
+    for i in x.chars() {
+        if i == ' ' {
+            j = j + 1;
+        } else {
             break;
         }
     }
-    while(j!=0){
+    while(j != 0) {
         x.remove(0);
-        j=j-1;
+        j = j - 1;
     }
-    let mut m:u32=(input.len()-1).try_into().unwrap();
-    while(input.chars().nth(m.try_into().unwrap()) == Some(' ') ){
-            m=m-1;
+    let mut m: u32 = (input.len() - 1).try_into().unwrap();
+    while (input.chars().nth(m.try_into().unwrap()) == Some(' ' )) {
+        m = m - 1;
     }
-    while(m!=(input.len()-1).try_into().unwrap()){
-        m=m+1;
+    while (m != (input.len() - 1).try_into().unwrap()) {
+        m = m + 1;
         x.pop();
     }
-    
-    // while(x[0]==" "){
-    //    x.remove(0);
-    // }
-    // let mut i = x.len()-1;
-    // while(x[i]==" "){
-      
-    //     x.pop();
-    //     i=x.len();
-    // }
     x
 }
 

@@ -15,12 +15,5 @@ fn main() {
         Some(p) => println!("{}{}",p.x,p.y),
         _ => println!("weq"),
     }
-
-    // if let Some(ref p)=y {
-    //     println!("Co-ordinates are {},{} ", p.x, p.y);
-    // }
-    // else{
-    //     panic!("no match!");
-    // }
     y; // Fix without deleting this line.
 }
