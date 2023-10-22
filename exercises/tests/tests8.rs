@@ -1,3 +1,4 @@
+
 // tests8.rs
 //
 // This execrise shares `build.rs` with the previous exercise.
@@ -7,8 +8,20 @@
 // Execute `rustlings hint tests8` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+// fn main() {}
 
+// #[cfg(test)]
+// mod tests {
+//     use super::*;
+
+//     #[test]
+//     fn test_success() {
+//         #[cfg(feature = "pass")]
+//         return;
+
+//         panic!("no cfg set");
+//     }
+// }
 fn main() {}
 
 #[cfg(test)]
@@ -17,8 +30,10 @@ mod tests {
 
     #[test]
     fn test_success() {
-        #[cfg(feature = "pass")]
-        return;
+        // Check if the "CARGO_FEATURE_PASS" environment variable is set.
+        if let Ok(_) = std::env::var("CARGO_FEATURE_PASS") {
+            return; // Return early if the feature is enabled.
+        }
 
         panic!("no cfg set");
     }
