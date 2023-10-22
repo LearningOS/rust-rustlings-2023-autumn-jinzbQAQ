@@ -1,3 +1,4 @@
+
 // tests7.rs
 //
 // When building packages, some dependencies can neither be imported in
@@ -34,8 +35,24 @@
 // Execute `rustlings hint tests7` or use the `hint` watch subcommand for a
 // hint.
 
-// I AM NOT DONE
+// fn main() {}
 
+// #[cfg(test)]
+// mod tests {
+
+//     use super::*;
+
+//     #[test]
+//     fn test_success() {
+//         let timestamp = std::time::SystemTime::now()
+//             .duration_since(std::time::UNIX_EPOCH)
+//             .unwrap()
+//             .as_secs();
+//         let s = std::env::var(std::time::UNIX_EPOCH).unwrap();
+//         let e: u64 = s.parse().unwrap();
+//         assert!(timestamp >= e && timestamp < e + 10);
+//     }
+// }
 fn main() {}
 
 #[cfg(test)]
@@ -48,8 +65,12 @@ mod tests {
             .duration_since(std::time::UNIX_EPOCH)
             .unwrap()
             .as_secs();
-        let s = std::env::var("TEST_FOO").unwrap();
+
+        // Parse the "UNIX_EPOCH" environment variable to u64.
+        let s = std::env::var("UNIX_EPOCH").unwrap();
         let e: u64 = s.parse().unwrap();
+
+        // Assert that the timestamp is within 10 seconds of the "UNIX_EPOCH" value.
         assert!(timestamp >= e && timestamp < e + 10);
     }
 }

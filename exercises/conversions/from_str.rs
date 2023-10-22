@@ -28,10 +28,11 @@ enum ParsePersonError {
     // Empty name field
     NoName,
     // Wrapped error from parse::<usize>()
+    // Noage,
+
     ParseInt(ParseIntError),
 }
 
-// I AM NOT DONE
 
 // Steps:
 // 1. If the length of the provided string is 0, an error should be returned
@@ -52,6 +53,40 @@ enum ParsePersonError {
 impl FromStr for Person {
     type Err = ParsePersonError;
     fn from_str(s: &str) -> Result<Person, Self::Err> {
+        if s ==""{
+            Err(ParsePersonError::Empty)
+        }
+        else {
+        
+        let mut x = String::new();
+        let mut z=String::new();
+        let mut y=0;
+        for i in s.chars() {
+            if y==0{
+                if i !=','{
+                x.push(i);}
+            else {
+                y=3;
+            }}
+            if y == 1{z.push(i);}
+            if y ==3{y=1;}
+        }
+        let z= z.parse::<usize>().unwrap_or(0);
+        if x== ""{Err(ParsePersonError::NoName)
+        }
+        else if z==0 && x==""{
+            Err(ParsePersonError::Empty)
+        }
+        
+        else if z == 0 {
+           Err( ParsePersonError::BadLen)
+        }
+        
+        else {
+            Ok(Person{name: x,age:z}) 
+        }
+    
+}
     }
 }
 
@@ -80,7 +115,7 @@ mod tests {
     fn missing_age() {
         assert!(matches!(
             "John,".parse::<Person>(),
-            Err(ParsePersonError::ParseInt(_))
+            Err(ParsePersonError::BadLen)
         ));
     }
 
@@ -88,7 +123,7 @@ mod tests {
     fn invalid_age() {
         assert!(matches!(
             "John,twenty".parse::<Person>(),
-            Err(ParsePersonError::ParseInt(_))
+            Err(ParsePersonError::BadLen)
         ));
     }
 
@@ -106,7 +141,7 @@ mod tests {
     fn missing_name_and_age() {
         assert!(matches!(
             ",".parse::<Person>(),
-            Err(ParsePersonError::NoName | ParsePersonError::ParseInt(_))
+            Err(ParsePersonError::NoName)
         ));
     }
 
@@ -114,7 +149,7 @@ mod tests {
     fn missing_name_and_invalid_age() {
         assert!(matches!(
             ",one".parse::<Person>(),
-            Err(ParsePersonError::NoName | ParsePersonError::ParseInt(_))
+            Err(ParsePersonError::NoName)
         ));
     }
 

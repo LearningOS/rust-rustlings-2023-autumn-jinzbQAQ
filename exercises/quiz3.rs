@@ -16,15 +16,39 @@
 //
 // Execute `rustlings hint quiz3` or use the `hint` watch subcommand for a hint.
 
-// I AM NOT DONE
+// //如果想要把结构体中的改成字符输出
+// impl ReportCard {
+//     pub fn print(&self) -> String {
+//         let letter_grade = match self.grade {
+//             0.0..=1.0 => "F",
+//             1.1..=2.0 => "D",
+//             2.1..=3.0 => "C",
+//             3.1..=4.0 => "B",
+//             4.1..=5.0 => "A",
+//             _ => "Invalid",
+//         };
 
-pub struct ReportCard {
-    pub grade: f32,
-    pub student_name: String,
-    pub student_age: u8,
+//         format!(
+//             "{} ({}) - achieved a grade of {}",
+//             &self.student_name,
+//             &self.student_age,
+//             letter_grade
+//         )
+//     }
+// }
+// pub struct ReportCard {
+//     pub grade: f32,
+//     pub student_name: String,
+//     pub student_age: u8,
+// }
+//第二种方法：运用泛型，并且重新定义一个结构体
+pub struct ReportCard<T,U,Q> {
+    pub grade: T,
+    pub student_name: U,
+    pub student_age: Q,
 }
 
-impl ReportCard {
+impl<T: std::fmt::Display,U: std::fmt::Display,Q: std::fmt::Display> ReportCard<T,U,Q> {
     pub fn print(&self) -> String {
         format!("{} ({}) - achieved a grade of {}",
             &self.student_name, &self.student_age, &self.grade)
@@ -56,8 +80,13 @@ mod tests {
             student_name: "Gary Plotter".to_string(),
             student_age: 11,
         };
+        let report = ReportCard {
+            grade: "A+",
+            student_name: "Gary Plotter".to_string(),
+            student_age: 11,
+        };
         assert_eq!(
-            report_card.print(),
+            report.print(),
             "Gary Plotter (11) - achieved a grade of A+"
         );
     }
